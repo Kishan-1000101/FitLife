@@ -1,33 +1,42 @@
-<nav class="navbar navbar-expand-md navbar-light shadow-sm" style="background-color: #000000; padding: 0.5rem 1rem;">
+
+<nav class="navbar navbar-expand-md navbar-light bg-light shadow-sm">
     <div class="container">
-        <a class="navbar-brand d-flex align-items-center" href="{{ url('/') }}">
-            <img src="{{ asset('images/FitLife_Logo.png') }}" alt="FitLife Logo" style="width: 40px; height: auto; max-height: 50px; margin-right: 10px;">
-            <span style="color: #E67E22; font-size: 1.5rem; font-weight: bold;">FitLife</span>
+        <a class="navbar-brand" href="{{ url('/') }}">
+            <img src="{{ asset('images/FitLife_Logo.png') }}" alt="FitLife Logo" style="width: 100; height: 90px; margin-right: 10px;">
+            {{ config('app.name', 'FitLife') }}
         </a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
             <span class="navbar-toggler-icon"></span>
         </button>
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mr-auto"></ul>
-            <ul class="navbar-nav ml-auto">
+            <!-- Left Side Of Navbar -->
+            <ul class="navbar-nav me-auto">
+
+            </ul>
+
+            <!-- Right Side Of Navbar -->
+            <ul class="navbar-nav ms-auto">
+                <!-- Authentication Links -->
                 @guest
                     @if (Route::has('login'))
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('login') }}" style="color: #FFFFFF;">{{ __('Login') }}</a>
+                            <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
                         </li>
                     @endif
+
                     @if (Route::has('register'))
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('register') }}" style="color: #FFFFFF;">{{ __('Register') }}</a>
+                            <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
                         </li>
                     @endif
                 @else
                     <li class="nav-item dropdown">
-                        <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre style="color: #FFFFFF;">
+                        <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                             {{ Auth::user()->name }}
                         </a>
-                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+
+                        <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                             <a class="dropdown-item" href="{{ route('profile') }}">
                                 {{ __('Profile') }}
                             </a>
@@ -36,6 +45,7 @@
                                              document.getElementById('logout-form').submit();">
                                 {{ __('Logout') }}
                             </a>
+
                             <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                 @csrf
                             </form>
