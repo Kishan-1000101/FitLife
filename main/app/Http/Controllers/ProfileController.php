@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
@@ -15,9 +16,16 @@ class ProfileController extends Controller
     public function update(Request $request)
     {
         $user = Auth::user();
-        $user->update($request->only(['age', 'weight', 'height', 'fitness_goal']));
+        $data = $request->only(['age', 'weight', 'height', 'fitness_goal']);
+
+        if ($request->hasFile('profile_picture')) {
+            $file = $request->file('profile_picture');
+            $filename = $file->getClientOriginalName();
+            $path = $file->storeAs('profile_pictures', $filename, 'public');
+            $data['profile_picture'] = $path;
+        }
+
+        $user->update($data);
         return redirect()->route('profile')->with('success', 'Profile updated successfully!');
     }
 }
-
-

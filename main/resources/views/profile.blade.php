@@ -13,9 +13,20 @@
                             {{ session('success') }}
                         </div>
                     @endif
-                    <form action="{{ route('profile.update') }}" method="POST">
+                    <form action="{{ route('profile.update') }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         @method('PUT')
+
+                        <div class="form-group">
+                            <label for="profile_picture">Profile Picture</label>
+                            <input type="file" name="profile_picture" class="form-control">
+                        </div>
+                        @if ($user->profile_picture)
+                            <div class="form-group">
+                                <img src="{{ asset('storage/' . $user->profile_picture) }}" alt="Profile Picture" class="img-thumbnail" width="150">
+                            </div>
+                        @endif
+
                         <div class="form-group">
                             <label for="age">Age</label>
                             <input type="number" name="age" class="form-control" value="{{ $user->age }}">

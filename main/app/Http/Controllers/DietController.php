@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Controllers;
 
 use App\Models\Diet;
@@ -12,8 +11,9 @@ class DietController extends Controller
     {
         $user = Auth::user();
         $diets = Diet::where('fitness_goal', $user->fitness_goal)->get();
-        return view('diets', compact('diets'));
+        return view('diets.index', compact('diets'));
     }
 }
+
 
 

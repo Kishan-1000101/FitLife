@@ -6,7 +6,6 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\WorkoutController;
 use App\Http\Controllers\DietController;
 
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -29,7 +28,7 @@ Auth::routes();
 // Authenticated routes
 Route::middleware('auth')->group(function () {
 
-    // DASHBOARD routes
+    // Dashboard routes
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
     
     // User profile routes
@@ -37,10 +36,12 @@ Route::middleware('auth')->group(function () {
     Route::put('/profile', [ProfileController::class, 'update'])->name('profile.update');
 
     // Workout routes
-    Route::get('/workouts', [WorkoutController::class, 'index'])->name('workouts');
+    Route::get('/workouts', [WorkoutController::class, 'index'])->name('workouts.index');
+    Route::get('/workouts/create', [WorkoutController::class, 'create'])->name('workouts.create');
+    Route::post('/workouts', [WorkoutController::class, 'store'])->name('workouts.store');
 
     // Diet routes
-    Route::get('/diets', [DietController::class, 'index'])->name('diets');
+    Route::get('/diets', [DietController::class, 'index'])->name('diets.index');
     
 });
 

@@ -12,7 +12,30 @@ class WorkoutController extends Controller
     {
         $user = Auth::user();
         $workouts = Workout::where('fitness_goal', $user->fitness_goal)->get();
-        return view('workouts', compact('workouts'));
+        return view('workouts.index', compact('workouts'));
+    }
+
+    public function create()
+    {
+        return view('workouts.create');
+    }
+
+    public function store(Request $request)
+    {
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'description' => 'nullable|string',
+            'fitness_goal' => 'required|string',
+        ]);
+
+        Workout::create([
+            'name' => $request->name,
+            'description' => $request->description,
+            'fitness_goal' => $request->fitness_goal,
+        ]);
+
+        return redirect()->route('workouts.index')->with('success', 'Workout plan created successfully!');
     }
 }
+
 
