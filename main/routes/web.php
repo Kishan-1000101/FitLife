@@ -5,6 +5,8 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\WorkoutController;
 use App\Http\Controllers\DietController;
+use App\Http\Controllers\MembershipController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -47,3 +49,5 @@ Route::middleware('auth')->group(function () {
 
 // Home route after login (optional)
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::post('/membership/upgrade', [MembershipController::class, 'upgrade'])->name('membership.upgrade')->middleware('auth');
