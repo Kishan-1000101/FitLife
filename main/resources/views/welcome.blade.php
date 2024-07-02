@@ -11,10 +11,10 @@
 </head>
 <body>
     <div id="app">
-        @include('layouts.navbar')
 
         <div class="hero-section">
             <div>
+                <img src="{{ asset('images/FitLife_Logo.png') }}" alt="FitLife Logo" style="width: 200px; height: auto; margin-bottom: 20px;">
                 <h1>Welcome to FitLife</h1>
                 <p>Your Journey to a Healthier Life Starts Here!</p>
                 <a href="{{ route('login') }}" class="btn btn-primary btn-lg mr-2">{{ __('Login') }}</a>

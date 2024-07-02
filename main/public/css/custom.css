@@ -2,14 +2,25 @@ body {
     background-color: #f8f9fa;
     color: #343a40;
     font-family: 'Nunito', sans-serif;
+    margin: 0;
+    padding: 0;
 }
 
-.navbar {
-    background-color: #1ABC9C;
+.navbar.navbar-expand-md.navbar-light.shadow-sm {
+    background-color: #000000 !important; /* Primary color */
+    padding: 1rem;
 }
 
-.navbar-brand, .navbar-nav .nav-link {
-    color: #fff !important;
+.navbar-brand {
+    color: #E67E22 !important; /* Secondary color */
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.navbar-nav .nav-link {
+    color: #FFFFFF !important; /* Accent color */
+    font-size: 1.2rem;
+    margin-right: 1rem;
 }
 
 .hero-section {
@@ -47,21 +58,30 @@ body {
 .feature-icon {
     font-size: 4rem;
     margin-bottom: 15px;
-    color: #1ABC9C;
+    color: #E67E22; /* Secondary color */
 }
 
-.btn-primary, .btn-secondary {
+.btn-primary {
     font-size: 1.25rem;
     padding: 10px 20px;
+    background-color: #E67E22; /* Secondary color */
+    border-color: #E67E22; /* Secondary color */
+}
+
+.btn-secondary {
+    font-size: 1.25rem;
+    padding: 10px 20px;
+    background-color: #000000; /* Primary color */
+    border-color: #000000; /* Primary color */
 }
 
 .footer {
-    background-color: #343a40;
+    background-color: #000000; /* Primary color */
     color: white;
     padding: 20px 0;
     text-align: center;
 }
 
 .footer a {
-    color: #1ABC9C;
+    color: #E67E22; /* Secondary color */
 }
