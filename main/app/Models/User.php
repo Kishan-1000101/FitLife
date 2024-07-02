@@ -17,10 +17,9 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
-        'name',
-        'email',
-        'password',
+        'name', 'email', 'password', 'age', 'weight', 'height', 'fitness_goal',
     ];
+    
 
     /**
      * The attributes that should be hidden for serialization.
@@ -44,4 +43,15 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+    public function workouts()
+    {
+        return $this->belongsToMany(Workout::class, 'user_workouts');
+    }
+
+    public function diets()
+    {
+        return $this->belongsToMany(Diet::class, 'user_diets');
+    }
+
 }
