@@ -8,7 +8,8 @@ class ProfileController extends Controller
 {
     public function index()
     {
-        return view('profile');
+        $user = Auth::user();
+        return view('profile', compact('user'));
     }
 
     public function update(Request $request)
@@ -18,4 +19,5 @@ class ProfileController extends Controller
         return redirect()->route('profile')->with('success', 'Profile updated successfully!');
     }
 }
+
 

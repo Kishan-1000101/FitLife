@@ -1,9 +1,11 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\WorkoutController;
 use App\Http\Controllers\DietController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -26,6 +28,10 @@ Auth::routes();
 
 // Authenticated routes
 Route::middleware('auth')->group(function () {
+
+    // DASHBOARD routes
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+    
     // User profile routes
     Route::get('/profile', [ProfileController::class, 'index'])->name('profile');
     Route::put('/profile', [ProfileController::class, 'update'])->name('profile.update');
@@ -35,6 +41,7 @@ Route::middleware('auth')->group(function () {
 
     // Diet routes
     Route::get('/diets', [DietController::class, 'index'])->name('diets');
+    
 });
 
 // Home route after login (optional)
