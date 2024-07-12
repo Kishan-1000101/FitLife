@@ -2,12 +2,18 @@
 
 @section('content')
 <div class="container">
-    <div class="row justify-content-center">
+    <div class="row">
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header">{{ __('Dashboard') }}</div>
                 <div class="card-body">
-                    <h4>Welcome, {{ $user->name }}!</h4>
+                    @if (session('status'))
+                        <div class="alert alert-success" role="alert" id="statusMessage">
+                            {{ session('status') }}
+                        </div>
+                    @endif
+
+                    <h4>Welcome, {{ Auth::user()->name }}!</h4>
                     <p>Here’s an overview of your progress:</p>
 
                     <!-- User Statistics -->
@@ -49,6 +55,41 @@
                 </div>
             </div>
         </div>
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-header">{{ __('Workout Plans') }}</div>
+                <div class="card-body">
+                    @foreach($workouts as $workout)
+                        <div class="workout">
+                            <h3>{{ $workout->name }}</h3>
+                            <p>{{ $workout->description }}</p>
+                        </div>
+                    @endforeach
+                </div>
+            </div>
+            <div class="card mt-3">
+                <div class="card-header">{{ __('Diet Plans') }}</div>
+                <div class="card-body">
+                    @foreach($diets as $diet)
+                    <div class="diet">
+                        <h3>{{ $diet->name }}</h3>
+                        <p>{{ $diet->description }}</p>
+                    </div>
+                @endforeach
+                </div>
+            </div>
+        </div>
     </div>
 </div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        setTimeout(function() {
+            const statusMessage = document.getElementById('statusMessage');
+            if (statusMessage) {
+                statusMessage.style.display = 'none';
+            }
+        }, 2000); // Hide after 2 seconds
+    });
+</script>
 @endsection

@@ -7,7 +7,6 @@ use App\Http\Controllers\WorkoutController;
 use App\Http\Controllers\DietController;
 use App\Http\Controllers\MembershipController;
 
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -24,15 +23,34 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+// About Us page
+Route::get('/about', function () {
+    return view('about');
+})->name('about');
+
+// Contact Us page
+Route::get('/contact', function () {
+    return view('contact');
+})->name('contact');
+
+// Privacy Policy page
+Route::get('/privacy', function () {
+    return view('privacy');
+})->name('privacy');
+
+// Terms of Service page
+Route::get('/terms', function () {
+    return view('terms');
+})->name('terms');
+
 // Authentication routes (Laravel built-in)
 Auth::routes();
 
 // Authenticated routes
 Route::middleware('auth')->group(function () {
-
     // Dashboard routes
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
-    
+
     // User profile routes
     Route::get('/profile', [ProfileController::class, 'index'])->name('profile');
     Route::put('/profile', [ProfileController::class, 'update'])->name('profile.update');
@@ -44,10 +62,7 @@ Route::middleware('auth')->group(function () {
 
     // Diet routes
     Route::get('/diets', [DietController::class, 'index'])->name('diets.index');
-    
+
+    // Membership upgrade route
+    Route::post('/membership/upgrade', [MembershipController::class, 'upgrade'])->name('membership.upgrade');
 });
-
-// Home route after login (optional)
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
-Route::post('/membership/upgrade', [MembershipController::class, 'upgrade'])->name('membership.upgrade')->middleware('auth');

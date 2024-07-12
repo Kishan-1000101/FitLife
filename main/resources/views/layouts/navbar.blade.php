@@ -15,6 +15,25 @@
 
             </ul>
 
+            <!-- Middle Part Of Navbar -->
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('dashboard') }}">{{ __('Home') }}</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('workouts.index') }}">{{ __('Workouts') }}</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('diets.index') }}">{{ __('Diet Plans') }}</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url('/about') }}">{{ __('About Us') }}</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url('/contact') }}">{{ __('Contact Us') }}</a>
+                </li>
+            </ul>
+
             <!-- Right Side Of Navbar -->
             <ul class="navbar-nav ms-auto">
                 <!-- Authentication Links -->

@@ -13,16 +13,19 @@
     <div id="app">
 
         <div class="hero-section">
-            <div>
+            <div class="hero-content">
                 <img src="{{ asset('images/FitLife_Logo.png') }}" alt="FitLife Logo" style="width: 200px; height: auto; margin-bottom: 20px;">
                 <h1>Welcome to FitLife</h1>
                 <p>Your Journey to a Healthier Life Starts Here!</p>
                 <a href="{{ route('login') }}" class="btn btn-primary btn-lg mr-2">{{ __('Login') }}</a>
                 <a href="{{ route('register') }}" class="btn btn-secondary btn-lg">{{ __('Register') }}</a>
             </div>
+            <a href="#features" class="scroll-down">
+                <i class="fas fa-arrow-down"></i>
+            </a>
         </div>
 
-        <div class="container features-section">
+        <div id="features" class="container features-section">
             <div class="row">
                 <div class="col-md-4">
                     <div class="feature">
@@ -46,13 +49,9 @@
                     </div>
                 </div>
             </div>
-        </div>
 
-        <div class="footer">
-            <p>&copy; 2024 FitLife. All rights reserved. | <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
         </div>
-    </div>
-
+        @include('layouts.footer')
     <script src="{{ mix('js/app.js') }}" defer></script>
 </body>
 </html>
