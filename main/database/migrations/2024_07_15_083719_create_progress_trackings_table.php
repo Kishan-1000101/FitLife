@@ -8,18 +8,20 @@ return new class extends Migration
 {
     public function up()
     {
-        Schema::create('user_diets', function (Blueprint $table) {
+        Schema::create('progress_trackings', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
-            $table->foreignId('diet_id')->constrained('diets')->onDelete('cascade');
-            $table->date('start_date')->nullable();
-            $table->date('end_date')->nullable();
+            $table->date('date');
+            $table->boolean('workout_completed')->default(false);
+            $table->integer('calories_consumed')->nullable();
+            $table->float('weight')->nullable();
             $table->timestamps();
         });
     }
 
     public function down()
     {
-        Schema::dropIfExists('user_diets');
+        Schema::dropIfExists('progress_tracking');
     }
 };
+

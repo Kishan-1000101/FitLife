@@ -5,18 +5,18 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Diet extends Model
+class Trainer extends Model
 {
     use HasFactory;
 
     protected $fillable = [
         'name',
-        'description',
-        'fitness_goal',
+        'specialization',
+        'contact',
     ];
 
-    public function meals()
+    public function users()
     {
-        return $this->belongsToMany(Meal::class, 'diet_meals');
+        return $this->belongsToMany(User::class, 'user_trainers');
     }
 }

@@ -8,10 +8,10 @@ return new class extends Migration
 {
     public function up()
     {
-        Schema::create('user_diets', function (Blueprint $table) {
+        Schema::create('user_trainers', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
-            $table->foreignId('diet_id')->constrained('diets')->onDelete('cascade');
+            $table->foreignId('trainer_id')->constrained('trainers')->onDelete('cascade');
             $table->date('start_date')->nullable();
             $table->date('end_date')->nullable();
             $table->timestamps();
@@ -20,6 +20,7 @@ return new class extends Migration
 
     public function down()
     {
-        Schema::dropIfExists('user_diets');
+        Schema::dropIfExists('user_trainers');
     }
 };
+

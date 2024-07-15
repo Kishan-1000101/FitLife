@@ -12,6 +12,11 @@
                         <div class="workout">
                             <h3>{{ $workout->name }}</h3>
                             <p>{{ $workout->description }}</p>
+                            <ul>
+                                @foreach($workout->exercises as $exercise)
+                                    <li>{{ $exercise->name }} - {{ $exercise->category }}</li>
+                                @endforeach
+                            </ul>
                         </div>
                     @endforeach
                 </div>

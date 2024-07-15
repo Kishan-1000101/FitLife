@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Http\Controllers;
 
 use App\Models\Diet;
@@ -10,10 +11,7 @@ class DietController extends Controller
     public function index()
     {
         $user = Auth::user();
-        $diets = Diet::where('fitness_goal', $user->fitness_goal)->get();
+        $diets = Diet::where('fitness_goal', $user->fitness_goal)->with('meals')->get();
         return view('diets.index', compact('diets'));
     }
 }
-
-
-

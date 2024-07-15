@@ -8,17 +8,18 @@ return new class extends Migration
 {
     public function up()
     {
-        Schema::create('workout_plans', function (Blueprint $table) {
+        Schema::create('financial_records', function (Blueprint $table) {
             $table->id();
-            $table->string('title');
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
+            $table->decimal('amount', 8, 2);
+            $table->timestamp('transaction_date');
             $table->text('description')->nullable();
-            $table->string('fitness_goal');
             $table->timestamps();
         });
     }
 
     public function down()
     {
-        Schema::dropIfExists('workout_plans');
+        Schema::dropIfExists('financial_records');
     }
 };

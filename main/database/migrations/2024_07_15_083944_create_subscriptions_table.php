@@ -8,18 +8,20 @@ return new class extends Migration
 {
     public function up()
     {
-        Schema::create('user_diets', function (Blueprint $table) {
+        Schema::create('subscriptions', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
-            $table->foreignId('diet_id')->constrained('diets')->onDelete('cascade');
-            $table->date('start_date')->nullable();
+            $table->string('plan_name');
+            $table->date('start_date');
             $table->date('end_date')->nullable();
+            $table->string('status')->default('active');
             $table->timestamps();
         });
     }
 
     public function down()
     {
-        Schema::dropIfExists('user_diets');
+        Schema::dropIfExists('subscriptions');
     }
 };
+

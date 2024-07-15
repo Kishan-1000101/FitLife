@@ -8,17 +8,18 @@ return new class extends Migration
 {
     public function up()
     {
-        Schema::create('workout_plans', function (Blueprint $table) {
+        Schema::create('trainers', function (Blueprint $table) {
             $table->id();
-            $table->string('title');
-            $table->text('description')->nullable();
-            $table->string('fitness_goal');
+            $table->string('name');
+            $table->string('specialization');
+            $table->string('contact');
             $table->timestamps();
         });
     }
 
     public function down()
     {
-        Schema::dropIfExists('workout_plans');
+        Schema::dropIfExists('trainers');
     }
 };
+

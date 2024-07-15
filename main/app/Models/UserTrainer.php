@@ -5,14 +5,15 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class UserWorkout extends Model
+class UserTrainer extends Model
 {
     use HasFactory;
 
     protected $fillable = [
         'user_id',
-        'workout_plan_id',
-        'completed_at',
+        'trainer_id',
+        'start_date',
+        'end_date',
     ];
 
     public function user()
@@ -20,8 +21,8 @@ class UserWorkout extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function workoutPlan()
+    public function trainer()
     {
-        return $this->belongsTo(WorkoutPlan::class);
+        return $this->belongsTo(Trainer::class);
     }
 }

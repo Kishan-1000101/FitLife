@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Diet extends Model
+class WorkoutPlan extends Model
 {
     use HasFactory;
 
@@ -15,8 +15,8 @@ class Diet extends Model
         'fitness_goal',
     ];
 
-    public function meals()
+    public function exercises()
     {
-        return $this->belongsToMany(Meal::class, 'diet_meals');
+        return $this->belongsToMany(Exercise::class, 'workout_exercises');
     }
 }

@@ -8,18 +8,16 @@ return new class extends Migration
 {
     public function up()
     {
-        Schema::create('user_workouts', function (Blueprint $table) {
+        Schema::create('workout_exercises', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
             $table->foreignId('workout_plan_id')->constrained('workout_plans')->onDelete('cascade');
-            $table->timestamp('completed_at')->nullable();
+            $table->foreignId('exercise_id')->constrained('exercises')->onDelete('cascade');
             $table->timestamps();
         });
     }
 
     public function down()
     {
-        Schema::dropIfExists('user_workouts');
+        Schema::dropIfExists('workout_exercises');
     }
 };
-

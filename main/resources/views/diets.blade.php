@@ -12,6 +12,11 @@
                         <div class="diet">
                             <h3>{{ $diet->name }}</h3>
                             <p>{{ $diet->description }}</p>
+                            <ul>
+                                @foreach($diet->meals as $meal)
+                                    <li>{{ $meal->name }} - {{ $meal->calories }} calories</li>
+                                @endforeach
+                            </ul>
                         </div>
                     @endforeach
                 </div>
